@@ -79,7 +79,7 @@ myModMask :: KeyMask
 myModMask = mod4Mask       -- Sets modkey to super/windows key
 
 myTerminal :: String
-myTerminal = "termite"   -- Sets default terminal
+myTerminal = "alacritty"   -- Sets default terminal
 
 myBrowser :: String
 myBrowser = "brave "               -- Sets firefox as browser for tree select
@@ -104,9 +104,8 @@ windowCount = gets $ Just . show . length . W.integrate' . W.stack . W.workspace
 
 myStartupHook :: X ()
 myStartupHook = do
-          spawnOnce "feh --bg-scale --randomize /home/m2/Pictures/wallpapers"
+          spawnOnce "feh --bg-scale --randomize ~/Pictures/wallpapers"
           spawnOnce "picom &"
-          spawnOnce "/usr/bin/emacs --daemon &"
           setWMName "xmonad"
 
 dtXPConfig :: XPConfig
@@ -378,7 +377,8 @@ myKeys =
         , ("M-<Return>", spawn myTerminal)
 
     -- Run Prompt
-        , ("M-S-<Return>", shellPrompt dtXPConfig)   -- Shell Prompt
+        -- , ("M-S-<Return>", shellPrompt dtXPConfig)   -- Shell Prompt
+        , ("M-S-<Return>", spawn "rofi -show run")   -- Shell Prompt
 
     -- Windows
         , ("M-S-c", kill1)                           -- Kill the currently focused client
